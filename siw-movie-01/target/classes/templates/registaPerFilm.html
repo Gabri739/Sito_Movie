@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Registi Disponibili</title>
+    <link rel="stylesheet" href="/stile.css?version=2" />
+  </head>
+
+  <body>
+    <div><a href="/"><img src="/logo-siw.png" width="50%"/></a></div>
+    <h1>Registi Disponibili</h1>
+    <div th:if="${artists.isEmpty()}">Non ci sono artisti nel sistema</div>
+    <ul>
+      <li th:each="artist : ${artists}">
+        <span th:text="${artist.name} + ' ' + ${artist.surname} + ' (' + ${artist.birth} + ')'">Pippo Pluto (01/01/2000)</span>
+        <a th:href="@{'/aggiungiRegistaFilm' + '/' + ${movie.id} + '/' + ${artist.id}}">Aggiungi come regista</a>
+      </li>
+    </ul>
+  </body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Info del film</title>
+    <link rel="stylesheet" href="/stile.css?version=2" />
+  </head>
+
+  <body>
+    <div><a href="/"><img src="/logo-siw.png" width="50%"/></a></div>
+    <h1>Attori del film</h1>
+    <div th:if="${attoriFilm.isEmpty()}">Non ci sono attori per questo film</div>
+    <ul>
+      <li th:each="artist : ${attoriFilm}">
+        <span th:text="${artist.name} + ' ' + ${artist.surname} + ' (' + ${artist.birth} + ')'">Pippo Pluto (01/01/2000)</span>
+      </li>
+    </ul>
+    <h1>Attori disponibili</h1>
+    <div th:if="${attoriLiberi.isEmpty()}">Non ci sono attori disponibili per questo film</div>
+    <ul>
+        <li th:each="artist : ${attoriLiberi}">
+          <span th:text="${artist.name} + ' ' + ${artist.surname} + ' (' + ${artist.birth} + ')'">Pippo Pluto (01/01/2000)</span>
+          <a th:href="@{'/aggiungiAttoreAFilm' + '/' + ${movie.id} + '/' + ${artist.id}}">Aggiungi</a>
+        </li>
+      </ul>
+  </body>
+
+</html>
